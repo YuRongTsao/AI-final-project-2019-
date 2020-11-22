@@ -1,6 +1,6 @@
 # Two player board game
 * Design an AI program to play a two-player nXn board game with human player or the other AI program.
-* Use MCTS(monte carlo tree search) to find the next step of AI program.
+* Use **MCTS(monte carlo tree search)** to find the next step of AI program.
 
 ## Description
 ### Introduction
@@ -50,3 +50,74 @@ wall (side) of the board, it will be removed automatically.
 <p align="center">
   <img src="./img/fig7.PNG">
 </p>
+
+## Build the AI program
+In order to find the next step of the AI program, we used **MCTS(monte carlo tree search)** as the search strategy.
+
+### What is MCTS
+This algorithm is used specially in games, Alpha Go reportedly used this algorithm with a combination of Neural Network. 
+
+MCTS is a way of searching a tree. Within this tree, its nodes represent the **states** and the arc between nodes represents the **choice** that would take from one state to the other. 
+
+The algorithm consists of 3 phases:
+
+**1. Selection**
+
+
+
+### Applying MCTS in this game
+In this project, the **board** represent the state and each **tile** represents the choice that AI program would take.
+
+
+The search procedure consists of 3 phases, **Tree policy,Default policy,and Backpropagation**
+
+
+
+
+**Tree policy (Selection)**
+
+**Default policy (Rollout)**
+
+
+Repeat the above mentioned procedure with `k iterations (k=1000)`, the AI program will choose a best tile to be removed based on the UBC function.  
+
+*Note: adjust variable `k` in `AILoop()` function can change the number of iteration of the MCTS algorithm.*
+
+*Note: change the `fileName` to change initial board*
+
+## Play the game with AI program
+**Step 1**
+
+Run the `final_project.py`, you will see a initial board with the color of each tile and the number of rows and columns.
+
+<p align="center">
+  <img src="./img/fig8.PNG">
+</p>
+
+**Step 2**
+
+Users can choose if they want to go first or not, and they have to select a color.
+Enter the number of row and column to remove the tile, the console will first show the board after users remove the specific tile and then show the board after the side effect.
+
+<p align="center">
+  <img src="./img/fig9.PNG">
+</p>
+
+**Step 3**
+
+The AI program will decide it's action right after the user turn. The console will also show two boards, the first is the current board after the AI remove the tile, and the second board is the result of the side effect.
+
+<p align="center">
+  <img src="./img/fig10.PNG">
+</p>
+
+**Step 4**
+
+Users can choose their next step to remove the tile. Repeat the above steps, which is, the AI program and the user take turns to remove the tile, until the end of the game
+
+<p align="center">
+  <img src="./img/fig11.PNG">
+</p>
+
+**Reference**
+[AI: Monte Carlo Tree Search (MCTS)](https://medium.com/@pedrohbtp/ai-monte-carlo-tree-search-mcts-49607046b204) 
