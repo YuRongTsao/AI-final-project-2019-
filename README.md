@@ -61,7 +61,9 @@ MCTS is a way of searching a tree. Within this tree, its nodes represent the **s
 
 The algorithm consists of 4 phases:
 
-FIG
+<p align="center">
+  <img src="./img/MCTS.jpeg" width=60% height=60%>
+</p>
 
 This 4-phase algorithm is run repeatedly until enough information is gathered to produce a good move.
 
@@ -70,17 +72,20 @@ This 4-phase algorithm is run repeatedly until enough information is gathered to
 Existing information is used to repeatedly choose successive child nodes down to the end of the search tree. Our path selection should achieve two goals: 
 * We should explore new paths to gain information
 * We should use existing information to exploit paths known to be good. 
+
+
 In order to help us achieve these two goals, we need to select child nodes using a selection function that balances *exploration* and *exploitation*.
 
 UCB function (Upper Confidence Bound 1) is used to decide which nodes to select.
 
-FIG
+<p align="center">
+  <img src="./img/UCB.png" width=250px height=150px>
+</p>
 
-- **wᵢ** : this node’s number of simulations that resulted in a win -> can also be treat as the **reward** of wining the game. Users can design different reward function based on their projects' requirement.
-
-- **sᵢ** : this node’s total number of simulations
-- **s**  : parent node’s total number of simulations
-- **c**  : exploration parameter
+* **wᵢ** : this node’s number of simulations that resulted in a win -> can also be treat as the **reward** of wining the game. Users can design different reward function based on their projects' requirement.
+* **sᵢ** : this node’s total number of simulations
+* **s**  : parent node’s total number of simulations
+* **c**  : exploration parameter
 
 * The left term (wᵢ / sᵢ) is the exploitation term -> average win rate.
 * The right term (sqrt(ln s / sᵢ)) is the exploration term -> It goes larger the less frequently a node is selected for simulation.
@@ -116,6 +121,8 @@ Randomly choose the legal move until the simulation reach the stop conditions, w
 * Win : reward = 3
 * Lose : reward = -3
 * Tie : reward = -2
+
+
 A legal move means the player select his/her own tile to remove. For example, if the player's tile color is Red, it is illegal for him to select a Blue color tile to remove.
 
 **3. Backpropagation** 
